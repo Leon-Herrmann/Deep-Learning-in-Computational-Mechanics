@@ -4,13 +4,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from mpl_toolkits.axes_grid1 import make_axes_locatable
-import matplotlib
-import matplotlib.font_manager
-matplotlib.rcParams["figure.dpi"] = 80
-from matplotlib import rc
-rc('font',**{'family':'serif','serif':['Computer Modern Roman'],
-             'size' : 10})
-rc('text', usetex=True)
+# import matplotlib
+# import matplotlib.font_manager
+# matplotlib.rcParams["figure.dpi"] = 80
+# from matplotlib import rc
+# rc('font',**{'family':'serif','serif':['Computer Modern Roman'],
+             # 'size' : 10})
+# rc('text', usetex=True)
 
 dtype = torch.float
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
