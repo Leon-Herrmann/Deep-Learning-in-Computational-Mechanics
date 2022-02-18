@@ -161,5 +161,5 @@ class PhysicsInformedContinuous:
         mse_f.set(color='silver', linewidth=2)
         plt.legend([mse_0, mse_b, mse_f], ['$MSE_0$', '$MSE_b$', '$MSE_f$'], loc='lower left')
         plt.tight_layout()
-        plt.savefig('plots/cost-function-history.eps')
+        plt.savefig('plots/cost-function-history.png')
         plt.show()
