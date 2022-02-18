@@ -152,4 +152,4 @@ def plot_results(t, x, U_pred, Flux_pred, Exact, Exact_flux, X_u_train, lb, ub):
     ax.set_title('$t = 0.375$', fontsize=10)
     ax.set_aspect(1.0 / ax.get_data_ratio(), adjustable='box')
     
-    fig.savefig('plots/1Dheat_Neumann.png')
+    # fig.savefig('plots/1Dheat_Neumann.png')
