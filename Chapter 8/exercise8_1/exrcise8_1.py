@@ -135,16 +135,16 @@ for epoch in range(epochs):
     for mini_batch in range(mini_batches):
         eps_pred_train = model.forward(E_data_train[mini_batch*mini_size:(mini_batch+1)*mini_size])
         cost_train = torch.sum((eps_pred_train - eps_data_train[mini_batch*mini_size:(mini_batch+1)*mini_size])**2)/(n**2*samples_train) 
-        cost_arr_train[epoch] += cost_train.detach().numpy()
+        cost_arr_train[epoch] += cost_train.cpu().detach().numpy()
         optimizer.zero_grad()
         cost_train.backward()
         optimizer.step()
     eps_pred_val = model.forward(E_data_val)
     cost_val = torch.sum((eps_pred_val - eps_data_val)**2)/(n**2*samples_val)
-    cost_arr_val[epoch] = cost_val.detach().numpy()
+    cost_arr_val[epoch] = cost_val.cpu().detach().numpy()
     if cost_val < best_cost:
         model_parameters_best = copy.deepcopy(model.state_dict())
-        best_cost = cost_val
+        best_cost = cost_arr_val[epoch]
     if epoch % 10 == 0: # early stopping could be added
         print(f'Epoch: {epoch}, Training Cost: {cost_arr_train[epoch]}')
         print(f'\t Validation Cost: {cost_arr_val[epoch]}')
@@ -162,20 +162,20 @@ i = 0
 j = 0
 fig, ax = plt.subplots()
 ax.set_aspect('equal')
-cp = ax.pcolormesh(model.forward(E_data_train)[i,j].detach(), cmap=plt.cm.jet) #levels=levels
+cp = ax.pcolormesh(model.forward(E_data_train)[i,j].cpu().detach(), cmap=plt.cm.jet) #levels=levels
 fig.colorbar(cp)
 plt.show()
 
 fig, ax = plt.subplots()
 ax.set_aspect('equal', 'box')
-cp = ax.pcolormesh(eps_data_train[i,j].detach(), cmap=plt.cm.jet)
+cp = ax.pcolormesh(eps_data_train[i,j].cpu().detach(), cmap=plt.cm.jet)
 fig.colorbar(cp)
 plt.show()
 
 #
 ###fig, ax = plt.subplots()
 ###ax.set_aspect('equal')
-###cp = ax.contourf(((model.forward(E_data)[i,j] - eps11_data[i,j])).detach(), cmap=plt.cm.jet) #levels=levels
+###cp = ax.contourf(((model.forward(E_data)[i,j] - eps11_data[i,j])).cpu().detach(), cmap=plt.cm.jet) #levels=levels
 ###fig.colorbar(cp)
 ###plt.show()
 
@@ -188,7 +188,7 @@ plt.show()
 
 
 ##stress computation
-#E = E_data_train[i].unsqueeze(0).detach()
+#E = E_data_train[i].unsqueeze(0).cpu().detach()
 #E.requires_grad = False
 #eps = model.forward(E)
 #E = E * E_scale
@@ -209,6 +209,6 @@ plt.show()
 #
 #fig, ax = plt.subplots()
 #ax.set_aspect('equal', 'box')
-#cp = ax.pcolormesh(sig[0,j].detach(), cmap=plt.cm.jet)
+#cp = ax.pcolormesh(sig[0,j].cpu().detach(), cmap=plt.cm.jet)
 #fig.colorbar(cp)
 #plt.show()
