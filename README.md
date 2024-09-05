@@ -5,6 +5,11 @@
 
 - The material consists of exercises (as Jupyter notebooks and Python files) described in the book (**exercises**), short demos (as Jupyter notebooks) covered in the book (**demos**), and lecture slides (as PowerPoint and pdf files) (**slides**). 
 
-- All of the material is licensed under a **Creative Commons Attribution 4.0 International License (CC BY 4.0)**, such that you may reuse and adapt the content for your own purposes as long as appropriate credit is given.
+## Installation
+**TODO**: ask Thomas (To install these packages on your own machine using conda, use the aiJupyter\_environment.yml file.)
 
-- In case of questions or the discovery of any bugs, please feel free to reach out to **leon.herrmann@tum.de**
+## License
+All of the material is licensed under a **Creative Commons Attribution 4.0 International License (CC BY 4.0)**, such that you may reuse and adapt the content for your own purposes as long as appropriate credit is given.
+
+## Contact
+In case of questions or the discovery of any bugs, please feel free to reach out to **leon.herrmann@tum.de**
